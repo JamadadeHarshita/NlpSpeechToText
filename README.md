@@ -43,3 +43,37 @@ To build a modular and scalable pipeline that semantically segments and summariz
 ### 7. Final Tags for Video
 - Extracted unique, high-frequency keywords across topics to assign global tags:
 
+
+### 8. Semantic Summarization
+- Model Used: `HuggingFaceH4/zephyr-7b-alpha`
+- Summary Style: Teaching-assistant style explanation for each topic cluster.
+- Example Summary:
+  "This lecture section focused on optimizing end-to-end retrieval-augmented systems..."
+
+---
+
+## Challenges & Improvements
+
+### Problem: Topic Misalignment with LDA
+- LDA misclassified jokes or asides as topics.
+
+### Solution: Louvain Clustering
+- Preserved semantic flow.
+- Handled scattered yet related topic mentions better.
+
+---
+
+## Limitations
+- No formal evaluation using ROUGE or human judgments.
+- No async batching in current implementation (affects scalability).
+- Occasional hallucinations from Zephyr model on rare prompts.
+
+---
+
+## Future Work
+- Add evaluation via GPT-based or human annotation.
+- Integrate `asyncio` for parallel chunk processing.
+- Extend support to other domains like podcast or meeting summarization.
+
+---
+
